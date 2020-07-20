@@ -2,15 +2,15 @@ authors:
 - Senthil Ganesan Ganesan <Senthil_Kumar_Ganesa@Dell.com>
 - Komal Patil <Komal_uttamrao_Patil@dell.com>
 dependencies:
-  ansible.netcommon: '>=0.0.1'
+  ansible.netcommon: '>=1.0.0'
 description: Ansible Network Collections for Dell EMC OS9
 license_file: LICENSE
 name: os9
 namespace: dellemc
 readme: README.md
 tags: [dell, dellemc, os9, emc, networking]
-version: 1.0.2
-repository: 'https://github.com:ansible-collections/dellemc.os9'
+version: 0.0.1
+repository: 'https://github.com/ansible-collections/dellemc.os9'
 documentation: 'https://github.com/ansible-collections/dellemc.os9/tree/master/docs'
-homepage: 'https://github.com:ansible-collections/dellemc.os9'
-issues: 'https://github.com:ansible-collections/dellemc.os9/issues'
+homepage: 'https://github.com/ansible-collections/dellemc.os9'
+issues: 'https://github.com/ansible-collections/dellemc.os9/issues'

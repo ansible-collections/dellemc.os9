@@ -16,7 +16,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = """
 ---
 module: os9_facts
-version_added: "2.2"
 author: "Dhivya P (@dhivyap)"
 short_description: Collect facts from remote devices running Dell EMC Networking OS9
 description:
@@ -25,7 +24,7 @@ description:
     base network fact keys with C(ansible_net_<fact>).  The facts
     module will always collect a base set of facts from the device
     and can enable or disable collection of additional facts.
-extends_documentation_fragment: os9
+extends_documentation_fragment: dellemc.os9.os9
 options:
   gather_subset:
     description:

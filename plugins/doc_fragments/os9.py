@@ -4,6 +4,9 @@
 # Copyright: (c) 2020, Dell Inc.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
 
 class ModuleDocFragment(object):
 
@@ -21,13 +24,11 @@ options:
             device over the specified transport.  The value of host is used as
             the destination address for the transport.
         type: str
-        required: true
       port:
         description:
           - Specifies the port to use when building the connection to the remote
             device.
         type: int
-        default: 22
       username:
         description:
           - User to authenticate the SSH session to the remote device. If the
@@ -52,7 +53,6 @@ options:
             console freezes before continuing. For example when saving
             configurations.
         type: int
-        default: 10
 notes:
   - For more information on using Ansible to manage Dell EMC Network devices see U(https://www.ansible.com/ansible-dell-networking).
 '''

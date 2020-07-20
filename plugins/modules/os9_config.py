@@ -16,7 +16,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = """
 ---
 module: os9_config
-version_added: "2.2"
 author: "Dhivya P (@dhivyap)"
 short_description: Manage Dell EMC Networking OS9 configuration sections
 description:
@@ -24,7 +23,7 @@ description:
     for segmenting configuration into sections.  This module provides
     an implementation for working with OS9 configuration sections in
     a deterministic way.
-extends_documentation_fragment: os9
+extends_documentation_fragment: dellemc.os9.os9
 options:
   lines:
     description:
@@ -139,7 +138,6 @@ options:
             and backup configuration will be copied in C(filename) within I(backup) directory.
         type: path
     type: dict
-    version_added: "2.8"
 notes:
   - This module requires Dell OS9 version 9.10.0.1P13 or above.
   - This module requires to increase the ssh connection rate limit.

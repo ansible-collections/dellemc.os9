@@ -28,7 +28,6 @@ short_description: Use os9 cliconf to run command on Dell OS9 platform
 description:
   - This os9 plugin provides low level abstraction apis for
     sending and receiving CLI commands from Dell OS9 network devices.
-version_added: 2.5
 """
 
 import re

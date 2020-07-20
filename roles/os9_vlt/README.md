@@ -72,11 +72,6 @@ Ansible Dell EMC Networking OS roles require connection information to establish
 
 > **NOTE**: Asterisk (\*) denotes the default value if none is specified.
 
-Dependencies
-------------
-
-The *os9_vlt* role is built on modules included in the core Ansible code. These modules were added in ansible version 2.2.0.
-
 Example playbook
 ----------------
 
