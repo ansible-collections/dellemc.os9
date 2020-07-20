@@ -58,17 +58,6 @@ os9_provider_spec = {
 os9_argument_spec = {
     'provider': dict(type='dict', options=os9_provider_spec),
 }
-os9_top_spec = {
-    'host': dict(removed_in_version=2.9),
-    'port': dict(removed_in_version=2.9, type='int'),
-    'username': dict(removed_in_version=2.9),
-    'password': dict(removed_in_version=2.9, no_log=True),
-    'ssh_keyfile': dict(removed_in_version=2.9, type='path'),
-    'authorize': dict(removed_in_version=2.9, type='bool'),
-    'auth_pass': dict(removed_in_version=2.9, no_log=True),
-    'timeout': dict(removed_in_version=2.9, type='int'),
-}
-os9_argument_spec.update(os9_top_spec)
 
 
 def check_args(module, warnings):

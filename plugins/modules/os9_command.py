@@ -17,7 +17,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = """
 ---
 module: os9_command
-version_added: "2.2"
 author: "Dhivya P (@dhivyap)"
 short_description: Run commands on remote devices running Dell OS9
 description:
@@ -26,8 +25,8 @@ description:
     argument that will cause the module to wait for a specific condition
     before returning or timing out if the condition is not met.
   - This module does not support running commands in configuration mode.
-    Please use M(os9_config) to configure Dell OS9 devices.
-extends_documentation_fragment: os9
+    Please use M(dellemc_os9_os9_config) to configure Dell OS9 devices.
+extends_documentation_fragment: dellemc.os9.os9
 options:
   commands:
     description:
@@ -46,7 +45,6 @@ options:
         within the configured number of I(retries), the task fails.
         See examples.
     type: list
-    version_added: "2.2"
   match:
     description:
       - The I(match) argument is used in conjunction with the
@@ -58,7 +56,6 @@ options:
     type: str
     default: all
     choices: [ all, any ]
-    version_added: "2.5"
   retries:
     description:
       - Specifies the number of retries a command should be tried
