@@ -3,7 +3,7 @@
 
 - name: COnfigure managemnet protocol telnet
   os9_config:
-    lines: ['hostname {{ inventory_hostname }}','ip telnet server enable']
+    lines: ['hostname {{ inventory_hostname }}', 'ip telnet server enable']
     provider: "{{ cli }}"
   register: result
 
