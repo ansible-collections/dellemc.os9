@@ -1,16 +1,16 @@
 SNMP role
 =========
 
-This role facilitates the configuration of global SNMP attributes. It supports the configuration of SNMP server attributes including users, group, community, location, and traps. This role is abstracted for Dell EMC platforms running OS9
+This role facilitates the configuration of global SNMP attributes. It supports the configuration of SNMP server attributes including users, group, community, location, and traps. This role is abstracted for Dell EMC PowerSwitch platforms running Dell EMC OS9.
 
-The SNMP role requires an SSH connection for connectivity to a Dell EMC Networking device. You can use any of the built-in OS connection variables .
+The SNMP role requires an SSH connection for connectivity to a Dell EMC OS9 device. You can use any of the built-in OS connection variables.
 
 
 Role variables
 --------------
 
-- Role is abstracted using the *ansible_network_os* variable that can take dellemc.os9.os9 as a value
-- If *os9_cfg_generate* is set to true, the variable generates the role configuration commands in a file
+- Role is abstracted using the `ansible_network_os` variable that can take `dellemc.os9.os9` as the value
+- If `os9_cfg_generate` is set to true, the variable generates the role configuration commands in a file
 - Any role variable with a corresponding state variable set to absent negates the configuration of that variable
 - Setting an empty value for any variable negates the corresponding configuration
 - Variables and values are case-sensitive
@@ -31,7 +31,7 @@ Role variables
 | ``snmp_host.ipv6`` | stirng  | Configures the IPv6 address for the SNMP trap host | os9  |
 | ``snmp_host.communitystring`` | string | Configures the SNMP community string of the trap host | os9 |
 | ``snmp_host.udpport`` | string | Configures the UDP number of the SNMP trap host (0 to 65535) | os9 |
-| ``snmp_host.version`` | string (required) | Specifies the SNMP version of the host (either 1 or 2c or 3 in os9) | os9 |
+| ``snmp_host.version`` | string (required) | Specifies the SNMP version of the host (either 1 or 2c or 3) | os9 |
 | ``snmp_host.vrf`` | list | Configures the SNMP VRF trap for the SNMP host (list of VRF names) | os9 |
 | ``snmp_host.state`` | string: absent,present\* | Deletes the SNMP trap host if set to absent | os9 |
 | ``snmp_traps`` | list | Configures SNMP traps (see ``snmp_traps.*``) | os9  |
@@ -39,7 +39,7 @@ Role variables
 | ``snmp_traps.state`` | string: absent,present\* | Deletes the SNMP trap if set to absent | os9 |
 | ``snmp_engine_id`` | string | Configures the SNMPv3 engineID for the local agent | os9 |
 | ``snmp_view`` | list | Configures SNMPv3 view information (see ``snmp_view.*``) | os9 |
-| ``snmp_view.name`` | string | Configures the SNMP view name (20 characters maximum) | os9 |
+| ``snmp_view.name`` | string | Configures the SNMP view name (up to 20 characters) | os9 |
 | ``snmp_view.oid_subtree`` | integer | Configures the SNMP view for the OID subtree | os9 |
 | ``snmp_view.include`` | boolean: true,false | Specifies whether the MIB family should be included or excluded from the view | os9 |
 | ``snmp_user``      | list | Configures SNMP users for each group name (see ``snmp_user.*``) | os9 |
@@ -80,27 +80,27 @@ Role variables
 Connection variables
 --------------------
 
-Ansible Dell EMC Networking roles require connection information to establish communication with the nodes in your inventory. This information can exist in the Ansible *group_vars* or *host_vars* directories, or inventory or in the playbook itself.
+Ansible Dell EMC network roles require connection information to establish communication with the nodes in your inventory. This information can exist in the Ansible *group_vars* or *host_vars* directories, or inventory or in the playbook itself.
 
 | Key         | Required | Choices    | Description                                         |
 |-------------|----------|------------|-----------------------------------------------------|
 | ``ansible_host`` | yes      |            | Specifies the hostname or address for connecting to the remote device over the specified transport |
-| ``ansible_port`` | no       |            | Specifies the port used to build the connection to the remote device; if value is unspecified, the ANSIBLE_REMOTE_PORT option is used; it defaults to 22 |
-| ``ansible_ssh_user`` | no       |            | Specifies the username that authenticates the CLI login for the connection to the remote device; if value is unspecified, the ANSIBLE_REMOTE_USER environment variable value is used  |
-| ``ansible_ssh_pass`` | no       |            | Specifies the password that authenticates the connection to the remote device.  |
-| ``ansible_become`` | no       | yes, no\*   | Instructs the module to enter privileged mode on the remote device before sending any commands; if value is unspecified, the ANSIBLE_BECOME environment variable value is used, and the device attempts to execute all commands in non-privileged mode |
-| ``ansible_become_method`` | no       | enable, sudo\*   | Instructs the module to allow the become method to be specified for handling privilege escalation; if value is unspecified, the ANSIBLE_BECOME_METHOD environment variable value is used. |
-| ``ansible_become_pass`` | no       |            | Specifies the password to use if required to enter privileged mode on the remote device; if ``ansible_become`` is set to no this key is not applicable. |
-| ``ansible_network_os`` | yes      | os9, null\*  | This value is used to load the correct terminal and cliconf plugins to communicate with the remote device. |
+| ``ansible_port`` | no       |            | Specifies the port used to build the connection to the remote device; if value is unspecified, the `ANSIBLE_REMOTE_PORT` option is used; it defaults to 22 |
+| ``ansible_ssh_user`` | no       |            | Specifies the username that authenticates the CLI login for the connection to the remote device; if value is unspecified, the `ANSIBLE_REMOTE_USER` environment variable value is used  |
+| ``ansible_ssh_pass`` | no       |            | Specifies the password that authenticates the connection to the remote device |
+| ``ansible_become`` | no       | yes, no\*   | Instructs the module to enter privileged mode on the remote device before sending any commands; if value is unspecified, the `ANSIBLE_BECOME` environment variable value is used, and the device attempts to execute all commands in non-privileged mode |
+| ``ansible_become_method`` | no       | enable, sudo\*   | Instructs the module to allow the become method to be specified for handling privilege escalation; if value is unspecified, the `ANSIBLE_BECOME_METHOD` environment variable value is used |
+| ``ansible_become_pass`` | no       |            | Specifies the password to use if required to enter privileged mode on the remote device; if ``ansible_become`` is set to no this key is not applicable |
+| ``ansible_network_os`` | yes      | os9, null\*  | Loads the correct terminal and cliconf plugins to communicate with the remote device |
 
 > **NOTE**: Asterisk (\*) denotes the default value if none is specified.
 
 Example playbook
 ----------------
 
-This example uses the *os9_snmp* role to completely set up the SNMP server attributes. It creates a *hosts* file with the switch details and corresponding variables. The hosts file should define the *ansible_network_os* variable with corresponding Dell EMC networking OS name. 
+This example uses the *os9_snmp* role to completely set up the SNMP server attributes. It creates a *hosts* file with the switch details and corresponding variables. The hosts file should define the `ansible_network_os` variable with corresponding Dell EMC OS9 name. 
 
-When *os9_cfg_generate* is set to true, the variable generates the configuration commands as a .part file in *build_dir* path. By default, the variable is set to false. It writes a simple playbook that only references the *os9_snmp* role. By including the role, you automatically get access to all of the tasks to configure SNMP features. 
+When `os9_cfg_generate` is set to true, the variable generates the configuration commands as a .part file in *build_dir* path. By default, the variable is set to false. It writes a simple playbook that only references the *os9_snmp* role. By including the role, you automatically get access to all of the tasks to configure SNMP features. 
 
 **Sample hosts file**
  
@@ -179,7 +179,7 @@ When *os9_cfg_generate* is set to true, the variable generates the configuration
               state: present 
           state: present
 
-**Simple playbook to setup snmp - leaf.yaml**
+**Simple playbook to setup snmp — leaf.yaml**
 
     - hosts: leaf1
       roles:
@@ -189,4 +189,4 @@ When *os9_cfg_generate* is set to true, the variable generates the configuration
 
     ansible-playbook -i hosts leaf.yaml
 
-(c) 2020 Dell Inc. or its subsidiaries.  All Rights Reserved.
+(c) 2017-2020 Dell Inc. or its subsidiaries. All rights reserved.
