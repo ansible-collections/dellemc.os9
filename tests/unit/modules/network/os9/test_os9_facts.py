@@ -57,7 +57,7 @@ class TestDellos9Facts(TestDellos9Module):
                     command = item
                 if '|' in command:
                     command = str(command).replace('|', '')
-                filename = str(command).replace(' ', '_') 
+                filename = str(command).replace(' ', '_')
                 filename = filename.replace('/', '7')
                 output.append(load_fixture(filename))
             return output
@@ -91,7 +91,7 @@ class TestDellos9Facts(TestDellos9Module):
         ansible_facts = result['ansible_facts']
         self.assertIn('default', ansible_facts['ansible_net_gather_subset'])
         self.assertIn('hardware', ansible_facts['ansible_net_gather_subset'])
-        self.assertEquals(['flash','fcmfs','nfsmount','ftp','tftp','scp','http','https'], ansible_facts['ansible_net_filesystems'])
+        self.assertEquals(['flash', 'fcmfs', 'nfsmount', 'ftp', 'tftp', 'scp', 'http', 'https'], ansible_facts['ansible_net_filesystems'])
         self.assertEquals(3128820, ansible_facts['ansible_net_memtotal_mb'])
         self.assertEquals(3125722, ansible_facts['ansible_net_memfree_mb'])
 
@@ -104,4 +104,3 @@ class TestDellos9Facts(TestDellos9Module):
         self.assertIn('fortyGigE 0/24', ansible_facts['ansible_net_interfaces'].keys())
         self.assertEquals(['Ma 0/0'], ansible_facts['ansible_net_neighbors'].keys())
         self.assertIn('ansible_net_interfaces', ansible_facts)
-
