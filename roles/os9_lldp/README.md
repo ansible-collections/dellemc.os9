@@ -1,15 +1,15 @@
 LLDP role
 =========
 
-This role facilitates the configuration of link layer discovery protocol (LLDP) attributes at a global and interface level. It supports the configuration of hello, mode, multiplier, advertise tlvs, management interface, FCoE, ISCSI at global and interface level. This role is abstracted for Dell EMC platforms running OS9.
+This role facilitates the configuration of link layer discovery protocol (LLDP) attributes at a global and interface level. It supports the configuration of hello, mode, multiplier, advertise TLVs, management interface, FCoE, iSCSI at global and interface level. This role is abstracted for Dell EMC PowerSwitch platforms running Dell EMC OS9.
 
-The LLDP role requires an SSH connection for connectivity to a Dell EMC Networking device. You can use any of the built-in OS connection variables .
+The LLDP role requires an SSH connection for connectivity to a Dell EMC OS9 device. You can use any of the built-in OS connection variables.
 
 Role variables
 --------------
 
-- Role is abstracted using the *ansible_network_os* variable that can take dellemc.os9.os9 as a value
-- If *os9_cfg_generate* is set to true, the variable generates the role configuration commands in a file
+- Role is abstracted using the `ansible_network_os` variable that can take `dellemc.os9.os9` as the value
+- If `os9_cfg_generate` is set to true, the variable generates the role configuration commands in a file
 - Any role variable with a corresponding state variable set to absent negates the configuration of that variable
 - Setting an empty value for any variable negates the corresponding configuration
 - Variables and values are case-sensitive
@@ -24,7 +24,7 @@ Role variables
 | ``mode``  | string: rx,tx   | Configures global LLDP mode configuration | os9 |
 | ``multiplier`` | integer | Configures the global LLDP multiplier (2 to 10) | os9 |
 | ``fcoe_priority_bits`` | integer | Configures priority bits for FCoE traffic (1 to FF) |  os9 |
-| ``iscsi_priority_bits`` | integer | Configures priority bits for ISCSI traffic (1 to FF) | os9 |
+| ``iscsi_priority_bits`` | integer | Configures priority bits for iSCSI traffic (1 to FF) | os9 |
 | ``dcbx`` | dictionary  | Configures DCBx parameters at the global level (see ``dcbx.*``)     |  os9 |
 | ``dcbx.version`` | string     | Configures the DCBx version | os9 |
 | ``advertise`` | dictionary     | Configures LLDP-MED and TLV advertisement at the global level (see ``advertise.*``) | os9 |
@@ -56,7 +56,7 @@ Role variables
 | ``location_identification.value`` | string     | Configures location information values | os9 |
 | ``location_identification.state`` | string: absent,present   | Deletes the location information if set to absent | os9 |
 | ``management_interface`` | dictionary     | Configures LLDP on the management interface (see ``management_interface.*``)     | os9 |
-| ``management_interface.enable``  | boolean         | Enables or disables LLDP on the management interface | os9 |
+| ``management_interface.enable``  | boolean         | Enables/disables LLDP on the management interface | os9 |
 | ``management_interface.hello`` | integer | Configures LLDP hello interval on the management interface (5 to 180) | os9 |
 | ``management_interface.mode``  | string: rx,tx   | Configures LLDP mode on the management interface | os9 |
 | ``management_interface.multiplier`` | integer | Configures LLDP multiplier on the management interface (2 to 10) | os9 |
@@ -65,7 +65,7 @@ Role variables
 | ``advertise.management_tlv`` | string     | Configures management TLVs advertisement  | os9 |
 | ``advertise.management_tlv_state`` | string: absent,present     | Deletes management TLVs advertisement if set to absent | os9 |
 | ``local_interface`` | dictionary     | Configures LLDP at the interface level (see ``local_interface.*``) | os9 |
-| ``local_interface.<interface name>`` | dictionary     | Configures LLDP at the interface level (see ``<interface name>.*``)     | os9 |
+| ``local_interface.<interface name>`` | dictionary     | Configures LLDP at the interface level (see ``interface name.*``)     | os9 |
 | ``<interface name>.state`` | string: absent,present   | Deletes LLDP at the interface level if set to absent | os9 |
 |  ``<interface name>.enable``  | boolean         | Enables or disables LLDP at the interface level | os9 |
 | ``<interface name>.hello`` | integer | Configures LLDP hello interval at the interface level (5 to 180) | os9 |
@@ -107,25 +107,27 @@ Role variables
 Connection variables
 --------------------
 
-Ansible Dell EMC Networking roles require connection information to establish communication with the nodes in your inventory. This information can exist in the Ansible *group_vars* or *host_vars* directories or inventory, or in the playbook itself.
+Ansible Dell EMC network roles require connection information to establish communication with the nodes in your inventory. This information can exist in the Ansible *group_vars* or *host_vars* directories or inventory, or in the playbook itself.
 
 | Key         | Required | Choices    | Description                                         |
 |-------------|----------|------------|-----------------------------------------------------|
 | ``ansible_host`` | yes      |            | Specifies the hostname or address for connecting to the remote device over the specified transport |
-| ``ansible_port`` | no       |            | Specifies the port used to build the connection to the remote device; if value is unspecified, the ANSIBLE_REMOTE_PORT option is used; it defaults to 22 |
-| ``ansible_ssh_user`` | no       |            | Specifies the username that authenticates the CLI login for the connection to the remote device; if value is unspecified, the ANSIBLE_REMOTE_USER environment variable value is used  |
+| ``ansible_port`` | no       |            | Specifies the port used to build the connection to the remote device; if value is unspecified, the `ANSIBLE_REMOTE_PORT` option is used; it defaults to 22 |
+| ``ansible_ssh_user`` | no       |            | Specifies the username that authenticates the CLI login for the connection to the remote device; if value is unspecified, the `ANSIBLE_REMOTE_USER` environment variable value is used  |
 | ``ansible_ssh_pass`` | no       |            | Specifies the password that authenticates the connection to the remote device. |
-| ``ansible_become`` | no       | yes, no\*   | Instructs the module to enter privileged mode on the remote device before sending any commands; if value is unspecified, the ANSIBLE_BECOME environment variable value is used, and the device attempts to execute all commands in non-privileged mode |
-| ``ansible_become_method`` | no       | enable, sudo\*   | Instructs the module to allow the become method to be specified for handling privilege escalation; if value is unspecified, the ANSIBLE_BECOME_METHOD environment variable value is used. |
-| ``ansible_become_pass`` | no       |            | Specifies the password to use if required to enter privileged mode on the remote device; if ``ansible_become`` is set to no this key is not applicable. |
-| ``ansible_network_os`` | yes      | os9, null\*  | This value is used to load the correct terminal and cliconf plugins to communicate with the remote device. |
+| ``ansible_become`` | no       | yes, no\*   | Instructs the module to enter privileged mode on the remote device before sending any commands; if value is unspecified, the `ANSIBLE_BECOME` environment variable value is used, and the device attempts to execute all commands in non-privileged mode |
+| ``ansible_become_method`` | no       | enable, sudo\*   | Instructs the module to allow the become method to be specified for handling privilege escalation; if value is unspecified, the `ANSIBLE_BECOME_METHOD` environment variable value is used |
+| ``ansible_become_pass`` | no       |            | Specifies the password to use if required to enter privileged mode on the remote device; if ``ansible_become`` is set to no this key is not applicable |
+| ``ansible_network_os`` | yes      | os9, null\*  | Loads the correct terminal and cliconf plugins to communicate with the remote device |
 
 > **NOTE**: Asterisk (\*) denotes the default value if none is specified.
 
 Example playbook
 ----------------
 
-This example uses the *os9_lldp* role to configure protocol lldp. It creates a *hosts* file with the switch details and corresponding variables. The hosts file should define the *ansible_network_os* variable with corresponding Dell EMC networking OS name. When *os9_cfg_generate* is set to true, the variable generates the configuration commands as a .part file in *build_dir* path. By default, the variable is set to false. It writes a simple playbook that only references the *os9_lldp* role.
+This example uses the *os9_lldp* role to configure protocol lldp. It creates a *hosts* file with the switch details and corresponding variables. The hosts file should define the `ansible_network_os` variable with corresponding Dell EMC OS9 name. 
+
+When `os9_cfg_generate` is set to true, the variable generates the configuration commands as a .part file in *build_dir* path. By default, the variable is set to false. It writes a simple playbook that only references the *os9_lldp* role.
  
 **Sample hosts file**
 
@@ -232,7 +234,7 @@ This example uses the *os9_lldp* role to configure protocol lldp. It creates a *
                  - loc_info: ecs-elin
                    value: 12345678911
 
-**Simple playbook to setup system - leaf.yaml**
+**Simple playbook to setup system — leaf.yaml**
 
     - hosts: leaf1
       roles:
@@ -242,4 +244,4 @@ This example uses the *os9_lldp* role to configure protocol lldp. It creates a *
 
     ansible-playbook -i hosts leaf.yaml
 
-(c) 2017-2020 Dell Inc. or its subsidiaries. All Rights Reserved.
+(c) 2017-2020 Dell Inc. or its subsidiaries. All rights reserved.

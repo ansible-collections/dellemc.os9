@@ -34,6 +34,7 @@ options:
         values to include a larger subset.  Values can also be used
         with an initial C(M(!)) to specify that a specific subset should
         not be collected.
+    type: list
     default: [ '!config' ]
 notes:
   - This module requires OS9 version 9.10.0.1P13 or above.
@@ -350,7 +351,6 @@ class Interfaces(FactsBase):
                 newline_count += 1
                 if newline_count == 2:
                     interface_start = True
-                continue
             else:
                 match = re.match(r'^(\S+) (\S+)', line)
                 if match and interface_start:
@@ -369,7 +369,6 @@ class Interfaces(FactsBase):
             if "Time since" in line:
                 interface_start = True
                 parsed[key] += '\n%s' % line
-                continue
             elif match and interface_start:
                 interface_start = False
                 key = match.group(0)
@@ -406,7 +405,7 @@ class Interfaces(FactsBase):
         for line in data.split('\n'):
             if len(line) == 0:
                 continue
-            elif line[0] == ' ':
+            if line[0] == ' ':
                 parsed[key] += '\n%s' % line
             else:
                 match = re.match(r'^(\S+) (\S+)', line)

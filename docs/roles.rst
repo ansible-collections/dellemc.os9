@@ -7,7 +7,7 @@ The roles facilitate provisioning of devices running Dell EMC OS9. This document
 AAA role
 --------
 
-The `os9_aaa <https://github.com/ansible-collections/dellemc.os9/blob/master/roles/os9_aaa/README.md>`_ role facilitates the configuration of Authentication Authorization Acccounting (AAA). It supports the configuration of TACACS and RADIUS server and AAA.
+The `os9_aaa <https://github.com/ansible-collections/dellemc.os9/blob/master/roles/os9_aaa/README.md>`_ role facilitates the configuration of authentication, authorization, and acccounting (AAA). It supports the configuration of TACACS and RADIUS server and AAA.
 
 
 ACL role
@@ -49,13 +49,13 @@ The `os9_ecmp <https://github.com/ansible-collections/dellemc.os9/blob/master/ro
 Interface role
 --------------
 
-The `os9_interface <https://github.com/ansible-collections/dellemc.os9/blob/master/roles/os9_interface/README.md>`_ role facilitates the configuration of interface attributes. It supports the configuration of administrative state, description, MTU, IP address, IP helper, and port mode. 
+The `os9_interface <https://github.com/ansible-collections/dellemc.os9/blob/master/roles/os9_interface/README.md>`_ role facilitates the configuration of interface attributes. It supports the configuration of administrative state, description, MTU, IP address, IP helper, suppress_ra and port mode. 
 
 
 LAG role
 --------
 
-The `os9_lag <https://github.com/ansible-collections/dellemc.os9/blob/master/roles/os9_lag/README.md>`_ role facilitates the configuration of link aggregation group (LAG) attributes, and supports the creation and deletion of a LAG and its member ports. It also supports the configuration of type (static/dynamic), hash scheme, and minimum required link.
+The `os9_lag <https://github.com/ansible-collections/dellemc.os9/blob/master/roles/os9_lag/README.md>`_ role facilitates the configuration of link aggregation group (LAG) attributes, and supports the creation and deletion of a LAG and its member ports. It also supports the configuration of an interface type (static/dynamic) and minimum required link.
 
 
 LLDP role
@@ -97,7 +97,7 @@ The `os9_snmp <https://github.com/ansible-collections/dellemc.os9/blob/master/ro
 System role
 -----------
 
-The `os9_system <https://github.com/ansible-collections/dellemc.os9/blob/master/roles/os9_system/README.md>`_ role facilitates the configuration of global system attributes. This role specifically enables configuration of hostname and enable password for os9.
+The `os9_system <https://github.com/ansible-collections/dellemc.os9/blob/master/roles/os9_system/README.md>`_ role facilitates the configuration of global system attributes. This role specifically enables configuration of hostname and enable password for os9. It also supports the configuration of management route, hash alogrithm, clock, line terminal, banner, and reload type.
 
 
 Users role

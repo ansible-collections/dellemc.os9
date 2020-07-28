@@ -36,6 +36,7 @@ options:
         module is not returned until the condition is satisfied or
         the number of retries has expired.
     type: list
+    elements: dict
     required: true
   wait_for:
     description:
@@ -45,6 +46,7 @@ options:
         within the configured number of I(retries), the task fails.
         See examples.
     type: list
+    elements: str
   match:
     description:
       - The I(match) argument is used in conjunction with the
@@ -169,9 +171,9 @@ def main():
     """
     argument_spec = dict(
         # { command: <str>, prompt: <str>, response: <str> }
-        commands=dict(type='list', required=True),
+        commands=dict(type='list', elements='dict', required=True),
 
-        wait_for=dict(type='list'),
+        wait_for=dict(type='list', elements='str'),
         match=dict(default='all', choices=['all', 'any']),
 
         retries=dict(default=10, type='int'),
