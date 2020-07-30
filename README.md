@@ -27,7 +27,6 @@ This collection includes the following sample playbooks that illustrate end to e
 Use this command to install the latest version of the OS9 collection from Ansible Galaxy:
 
 ```
-
     ansible-galaxy collection install dellemc.os9
 
 ```
@@ -59,7 +58,6 @@ Ansible version 2.10 or later
 **host_vars/os9_sw1.yaml**
 
 ```
-
     hostname: os9_sw1_
     # parameters for connection type network_cli
     ansible_ssh_user: xxxx
@@ -81,7 +79,6 @@ Ansible version 2.10 or later
 **inventory.yaml**
 
 ```
-
     os9_sw1 ansible_host=100.104.28.119
     os9_sw2 ansible_host=100.104.28.118
     
