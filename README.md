@@ -1,57 +1,94 @@
 # Ansible Network Collection for Dell EMC OS9
 
-This collection includes the Ansible modules, plugins and roles required to work on Dell EMC PowerSwitch platforms running Dell EMC OS9. Sample playbooks and documentation are also included to show how the collection can be used.
+## Collection contents
 
-### Ansible modules
+This collection includes the Ansible modules, plugins and roles needed to provision and manage Dell EMC PowerSwitch platforms running Dell EMC OS9. Sample playbooks and documentation are also included to show how the collection can be used.
 
-- **os9_command.py** — Run commands on remote devices running Dell EMC OS9
+### Collection core modules
 
-- **os9_config.py** — Manage configuration sections on remote devices running Dell EMC OS9
+- **os9_command.py** — Run commands on devices running OS9
+
+- **os9_config.py** — Manage configuration sections on devices running OS9
   
-- **os9_facts.py** — Collect facts from remote devices running Dell EMC OS9
+- **os9_facts.py** — Collect facts from devices running OS9
 
-### Ansible roles
-Roles facilitate provisioning of device running Dell EMC OS9. These roles explain how to use OS9 and include os9_aaa , os9_bgp, os9_ecmp, and so on. There are over 22 roles available. The documentation for each role is at [OS9 roles documentation](https://github.com/ansible-collections/dellemc.os9/blob/master/docs/roles.rst)
+### Collection roles
 
-### Playbooks
-Sample playbooks are included for provisioning devices running Dell EMC OS9.
+These roles facilitate provisioning and administration of devices running Dell EMC OS9. There are over 22 roles available that provide a comprehensive coverage of most OS9 resources, including os9_aaa , os9_bgp and os9_ecmp. The documentation for each role is at [OS9 roles](https://github.com/ansible-collections/dellemc.os9/blob/master/docs/roles.rst)
 
-- [CLOS Fabric](https://github.com/ansible-collections/dellemc.os9/blob/master/playbooks/clos_fabric_ebgp/README.md) — Example playbook to build CLOS Fabric with Dell EMC OS9 switches
+### Sample use case playbooks
+
+This collection includes the following sample playbooks that illustrate end to end use cases:
+
+- [CLOS Fabric](https://github.com/ansible-collections/dellemc.os9/blob/master/playbooks/clos_fabric_ebgp/README.md) — Example playbook to build a Layer 3 Leaf-Spine fabric
 
 ## Installation
+
 Use this command to install the latest version of the OS9 collection from Ansible Galaxy:
+
+```
 
     ansible-galaxy collection install dellemc.os9
 
-To install a specific version, a version range identifier must be specified. For example, to install the most recent version that is greater than or equal to 1.0.0 and less than 2.0.0.
+```
 
+To install a specific version, a version range identifier must be specified. For example, to install the most recent version that is greater than or equal to 1.0.0 and less than 2.0.0:
+
+```
     ansible-galaxy collection install 'dellemc.os9:>=1.0.0,<2.0.0'
 
+```
+
 ## Version compatibility
+
 Ansible version 2.10 or later
 
-> **NOTE**: For Ansible version lower than 2.10, Please use [dellos9 modules](https://ansible-dellos-docs.readthedocs.io/en/latest/modules.html#os9-modules) and [dellos roles](https://ansible-dellos-docs.readthedocs.io/en/latest/roles.html)
+> **NOTE**: For Ansible version lower than 2.10, use the legacy [dellos9 modules](https://ansible-dellos-docs.readthedocs.io/en/latest/modules.html#os9-modules) and [dellos roles](https://ansible-dellos-docs.readthedocs.io/en/latest/roles.html)
 
 ## Sample playbook
 
-    - hosts: os9_sw1
+**playbook.yaml**
+
+    - hosts: os9switches
       connection: network_cli
       collections:
         - dellemc.os9
       roles:
         - os9_vlan
 
-**Sample host_vars/os9_sw1.yaml**
+**host_vars/os9_sw1.yaml**
 
-    hostname: os9_sw1
+```
+
+    hostname: os9_sw1_
     # parameters for connection type network_cli
     ansible_ssh_user: xxxx
     ansible_ssh_pass: xxxx
     ansible_network_os: dellemc.os9.os9
 
-**Sample inventory.yaml**
+    os9_vlan:
+        vlan 100:
+          name: "test_vlan1"
+          description: "test1"
+          state: present
+        vlan 200:
+          name: "test_vlan2"
+          description: "test2"
+          state: absent
 
-    [os9]
+```
+
+**inventory.yaml**
+
+```
+
     os9_sw1 ansible_host=100.104.28.119
+    os9_sw2 ansible_host=100.104.28.118
+    
+    [os9switches]
+    os9_sw1
+    os9_sw2
+
+```
 
 (c) 2017-2020 Dell Inc. or its subsidiaries. All rights reserved.
