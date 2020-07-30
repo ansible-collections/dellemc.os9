@@ -63,7 +63,8 @@ Ansible version 2.10 or later
     ansible_ssh_user: xxxx
     ansible_ssh_pass: xxxx
     ansible_network_os: dellemc.os9.os9
-
+    
+    #create vlan 100 and delete vlan 200
     os9_vlan:
         vlan 100:
           name: "test_vlan1"
