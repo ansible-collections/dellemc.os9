@@ -14,7 +14,7 @@ This collection includes the Ansible modules, plugins and roles needed to provis
 
 ### Collection roles
 
-These roles facilitate provisioning and administration of devices running Dell EMC OS9. There are over 22 roles available that provide a comprehensive coverage of most OS9 resources, including os9_aaa , os9_bgp and os9_ecmp. The documentation for each role is at [OS9 roles](https://github.com/ansible-collections/dellemc.os9/blob/master/docs/roles.rst)
+These roles facilitate provisioning and administration of devices running Dell EMC OS9. There are over 22 roles available that provide a comprehensive coverage of most OS9 resources, including os9_aaa, os9_bgp and os9_ecmp. The documentation for each role is at [OS9 roles](https://github.com/ansible-collections/dellemc.os9/blob/master/docs/roles.rst).
 
 ### Sample use case playbooks
 
@@ -40,9 +40,9 @@ To install a specific version, a version range identifier must be specified. For
 
 ## Version compatibility
 
-Ansible version 2.10 or later
+Ansible version 2.10 or later.
 
-> **NOTE**: For Ansible version lower than 2.10, use the legacy [dellos9 modules](https://ansible-dellos-docs.readthedocs.io/en/latest/modules.html#os9-modules) and [dellos roles](https://ansible-dellos-docs.readthedocs.io/en/latest/roles.html)
+> **NOTE**: For Ansible version lower than 2.10, use the legacy [dellos9 modules](https://ansible-dellos-docs.readthedocs.io/en/latest/modules.html#os9-modules) and [dellos roles](https://ansible-dellos-docs.readthedocs.io/en/latest/roles.html).
 
 ## Sample playbook
 
@@ -61,7 +61,7 @@ Ansible version 2.10 or later
 
 ```
 hostname: os9_sw1
-# parameters for connection type network_cli
+# Parameters for connection type network_cli
 ansible_ssh_user: xxxx
 ansible_ssh_pass: xxxx
 ansible_network_os: dellemc.os9.os9
@@ -73,7 +73,6 @@ os9_vlan:
       state: present
     vlan 888:
       state: absent
-
 
 ```
 
