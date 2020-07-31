@@ -48,44 +48,47 @@ Ansible version 2.10 or later
 
 **playbook.yaml**
 
-    - hosts: os9switches
-      connection: network_cli
-      collections:
-        - dellemc.os9
-      roles:
-        - os9_vlan
+```
+- hosts: os9_switches
+  connection: network_cli
+  collections:
+    - dellemc.os9
+  roles:
+    - os9_vlan
+```
 
 **host_vars/os9_sw1.yaml**
 
 ```
-    hostname: os9_sw1_
-    # parameters for connection type network_cli
-    ansible_ssh_user: xxxx
-    ansible_ssh_pass: xxxx
-    ansible_network_os: dellemc.os9.os9
-    
-    #create vlan 100 and delete vlan 200
-    os9_vlan:
-        vlan 100:
-          name: "test_vlan1"
-          description: "test1"
-          state: present
-        vlan 200:
-          name: "test_vlan2"
-          description: "test2"
-          state: absent
+hostname: os9_sw1
+# parameters for connection type network_cli
+ansible_ssh_user: xxxx
+ansible_ssh_pass: xxxx
+ansible_network_os: dellemc.os9.os9
+
+# Create vlan100 and delete vlan888
+os9_vlan:
+    vlan 100:
+      description: "Blue"
+      state: present
+    vlan 888:
+      state: absent
+
 
 ```
 
 **inventory.yaml**
 
 ```
-    os9_sw1 ansible_host=100.104.28.119
-    os9_sw2 ansible_host=100.104.28.118
+[os9_sw1]
+os9_sw1 ansible_host=100.104.28.119
+
+[os9_sw2]
+os9_sw2 ansible_host=100.104.28.118
     
-    [os9switches]
-    os9_sw1
-    os9_sw2
+[os9_switches:children]
+os9_sw1
+os9_sw2
 
 ```
 
