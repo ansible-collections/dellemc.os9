@@ -42,7 +42,7 @@ To install a specific version, a version range identifier must be specified. For
 
 Ansible version 2.10 or later.
 
-> **NOTE**: For Ansible version lower than 2.10, use the legacy [dellos9 modules](https://ansible-dellos-docs.readthedocs.io/en/latest/modules.html#os9-modules) and [dellos roles](https://ansible-dellos-docs.readthedocs.io/en/latest/roles.html).
+> **NOTE**: For Ansible versions lower than 2.10, use the legacy [dellos9 modules](https://ansible-dellos-docs.readthedocs.io/en/latest/modules.html#os9-modules) and [dellos roles](https://ansible-dellos-docs.readthedocs.io/en/latest/roles.html).
 
 ## Sample playbook
 
