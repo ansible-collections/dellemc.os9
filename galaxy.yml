@@ -9,7 +9,7 @@ name: os9
 namespace: dellemc
 readme: README.md
 tags: [dell, dellemc, os9, emc, networking]
-version: 1.0.1
+version: 1.0.2
 repository: 'https://github.com/ansible-collections/dellemc.os9'
 documentation: 'https://github.com/ansible-collections/dellemc.os9/tree/master/docs'
 homepage: 'https://github.com/ansible-collections/dellemc.os9'
