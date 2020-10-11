@@ -187,7 +187,7 @@ interface {{ key }}
         {% endif %}
       {% endif %}
       {% if intf_vars.ip_and_mask_secondary is defined and intf_vars.ip_and_mask_secondary %}
-        {% if secondary_ip_state is defined and secondary_ip_state == "absent" %}
+        {% if intf_vars.secondary_ip_state is defined and intf_vars.secondary_ip_state == "absent" %}
  no ip address {{ intf_vars.ip_and_mask_secondary }} secondary
         {% else %}
  ip address {{ intf_vars.ip_and_mask_secondary }} secondary

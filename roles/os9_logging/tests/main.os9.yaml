@@ -23,9 +23,9 @@ os9_logging:
        udp_port: 1025
        state: present
     buffer: 6
-    console_level: 7
-    trap_level: 5
-    syslog_version: 5
+    console: 7
+    trap: 5
+    version: 5
     history: 4
     history_size: 3
     monitor: 5

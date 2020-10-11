@@ -20,6 +20,7 @@ Role variables
 |------------|---------------------------|---------------------------------------------------------|-----------------------|
 | ``userrole`` | stirng (required) | Configures the role name which can be configured for users | os9 |
 | ``userrole_state`` | string: absent,present\* | Deletes the user role with specified name if set to absent | os9 |
+| ``userrole_inherit`` | string: netadmin,netoperator,secadmin,sysadmin\* | Specifies the existing role name to inherit the permissions | os9 |
 | ``username`` | string (required)         | Configures the username which must adhere to specific format guidelines (valid usernames begin with A-Z, a-z, or 0-9 and can also contain `@#$%^&*-_= +;<>,.~` characters) | os9 |
 | ``password`` | string                    | Configures the password set for the username; | os9 |
 | ``role`` | string                    | Configures the role assigned to the user | os9 |
@@ -75,6 +76,7 @@ If `os9_cfg_generate` is set to true, the variable generates the role configurat
     os9_users:
        - userrole: role1
          userrole_state: present
+         userrole_inherit: sysadmin
        - username: u1
          password: test
          role: sysadmin

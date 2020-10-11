@@ -20,7 +20,7 @@ Role variables
 | Key        | Type                      | Description                                             | Support               |
 |------------|---------------------------|---------------------------------------------------------|-----------------------|
 | ``snmp_contact`` | string | Configures SNMP contact information  | os9 |
-| ``snmp_server_vrf`` | boolean: true, false\* | Enables SNMP-server VRF globally | os9 |
+| ``snmp_server_vrf`` | string | Specifies vrf instance for snmp requests, removes the vrf instance for snmp requests if kept blank | os9 |
 | ``snmp_location`` | string | Configures SNMP location information | os9 |
 | ``snmp_community`` | list | Configures SNMP community information (see ``snmp_community.*``) | os9 |
 | ``snmp_community.name`` | string (required)         | Configures the SNMP community string | os9 |

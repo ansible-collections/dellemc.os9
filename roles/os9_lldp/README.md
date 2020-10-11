@@ -73,7 +73,6 @@ Role variables
 | ``<interface name>.multiplier`` | integer | Configures LLDP multiplier at the interface level (2 to 10) |  os9 |
 | ``<interface name>.dcbx`` | dictionary  | Configures DCBx parameters at the interface level (see ``dcbx.*``)     | os9 |
 | ``dcbx.version`` | string     | Configures DCBx version at the interface level  | os9 |
-| ``dcbx.port_role`` | string     | Configures DCBx port role at the interface level  | os9 |
 | ``<interface name>.advertise`` | dictionary     | Configures LLDP-MED TLV advertisement at the interface level (see ``advertise.*``)     | os9 |
 | ``advertise.dcbx_tlv`` | string     | Configures DCBx TLVs advertisement at the interface level | os9 |
 | ``advertise.dcbx_tlv_state`` | string: present,absent     | Deletes interface level DCBx TLVs advertisement if set to absent | os9 |
@@ -144,95 +143,94 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
     ansible_network_os: dellemc.os9.os9
     build_dir: ../temp/os9
     os9_lldp:
-       global_lldp_state: present
-       enable: false
-        mode: rx
-       multiplier: 3
-       fcoe_priority_bits: 3
-       iscsi_priority_bits: 3
-       hello: 6
-       dcbx:
-         version: auto
-       management_interface:
-         hello: 7
-         multiplier: 3
-         mode: tx
-         enable: true
-         advertise:
-           port_descriptor: false
-           management_tlv: management-address system-capabilities
-           management_tlv_state: absent
-       advertise:
-         dcbx_tlv: pfc
-         dcbx_tlv_state: absent
-         dcbx_appln_tlv: fcoe
-         dcbx_appln_tlv_state:
-         dot1_tlv:
-           port_tlv:
-              protocol_vlan_id: true
-              port_vlan_id: true
-           vlan_tlv:
-              vlan_range: 2-4
-         dot3_tlv:
-           max_frame_size: false
-         port_descriptor: false
-         management_tlv: management-address system-capabilities
-         management_tlv_state: absent
-         med:
-           global_med: true
-           application:
-             - name: "guest-voice"
-               vlan_id: 2
-               l2_priority: 3
-               code_point_value: 4
-             - name: voice
-               priority_tagged: true
-               l2_priority: 3
-               code_point_value: 4
-           location_identification:
-             - loc_info: ecs-elin
-               value: 12345678911
-               state: present
-       local_interface:
-         fortyGigE 1/3:
-           lldp_state: present
-           enable: false
-           mode: rx
-           multiplier: 3
-           hello: 8
-           dcbx:
-             version: auto
-             port_role: auto-upstream
-           advertise:
-             dcbx_tlv: pfc
-             dcbx_tlv_state: present
-             dcbx_appln_tlv: fcoe
-             dcbx_appln_tlv_state: absent
-             dot1_tlv:
-               port_tlv:
-                 protocol_vlan_id: true
-                 port_vlan_id: true
-               vlan_tlv:
-                 vlan_range: 2-4
-                 state: present
-             dot3_tlv:
-               max_frame_size: true
-             port_descriptor: true
-             management_tlv: management-address system-capabilities
-             management_tlv_state: absent
-             med:
-               application:
-                 - name: guest-voice
-                   vlan_id: 2
-                   l2_priority: 3
-                   code_point_value: 4
-                 - name: voice
-                   priority_tagged: true
-                   l2_priority: 3
-                   code_point_value: 4
-               location_identification:
-                 - loc_info: ecs-elin
-                   value: 12345678911
+      global_lldp_state: present
+      enable: false
+      mode: rx
+      multiplier: 3
+      fcoe_priority_bits: 3
+      iscsi_priority_bits: 3
+      hello: 6
+      dcbx:
+        version: auto
+      management_interface:
+        hello: 7
+        multiplier: 3
+        mode: tx
+        enable: true
+        advertise:
+          port_descriptor: false
+          management_tlv: management-address system-capabilities
+          management_tlv_state: absent
+      advertise:
+        dcbx_tlv: pfc
+        dcbx_tlv_state: absent
+        dcbx_appln_tlv: fcoe
+        dcbx_appln_tlv_state:
+        dot1_tlv:
+          port_tlv:
+            protocol_vlan_id: true
+            port_vlan_id: true
+          vlan_tlv:
+            vlan_range: 2-4
+        dot3_tlv:
+          max_frame_size: false
+        port_descriptor: false
+        management_tlv: management-address system-capabilities
+        management_tlv_state: absent
+        med:
+          global_med: true
+          application:
+            - name: "guest-voice"
+              vlan_id: 2
+              l2_priority: 3
+              code_point_value: 4
+            - name: voice
+              priority_tagged: true
+              l2_priority: 3
+              code_point_value: 4
+          location_identification:
+            - loc_info: ecs-elin
+              value: 12345678911
+              state: present
+      local_interface:
+        fortyGigE 1/3:
+          lldp_state: present
+          enable: false
+          mode: rx
+          multiplier: 3
+          hello: 8
+          dcbx:
+            version: auto
+          advertise:
+            dcbx_tlv: pfc
+            dcbx_tlv_state: present
+            dcbx_appln_tlv: fcoe
+            dcbx_appln_tlv_state: absent
+            dot1_tlv:
+              port_tlv:
+                protocol_vlan_id: true
+                port_vlan_id: true
+              vlan_tlv:
+                vlan_range: 2-4
+                state: present
+            dot3_tlv:
+              max_frame_size: true
+            port_descriptor: true
+            management_tlv: management-address system-capabilities
+            management_tlv_state: absent
+            med:
+              application:
+                - name: guest-voice
+                  vlan_id: 2
+                  l2_priority: 3
+                  code_point_value: 4
+                - name: voice
+                  priority_tagged: true
+                  l2_priority: 3
+                  code_point_value: 4
+              location_identification:
+                - loc_info: ecs-elin
+                  value: 12345678911
 
 **Simple playbook to setup system — leaf.yaml**
 
