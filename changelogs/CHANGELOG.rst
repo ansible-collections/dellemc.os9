@@ -4,6 +4,14 @@ Ansible Network Collection for Dell EMC OS9 Release Notes
 
 .. contents:: Topics
 
+v1.0.3
+======
+
+Release Summary
+---------------
+
+Added bug fixes for bugs found during System Test.
+
 v1.0.2
 ======
 

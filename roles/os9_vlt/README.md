@@ -28,7 +28,6 @@ Role variables
 | ``multicast_peer_routing_timeout``     | integer        | Configures the timeout for multicast peer routing (1 to 1200) | os9 |
 | ``priority``     | integer        | Configures the primary priority to the corresponding channel ID | os9 |
 | ``unit_id``       | integer        | Configures the system unit ID for VLT (either 0 or 1) | os9 |
-| ``vlt_mac``       | string        | Configures the VLT MAC address | os9 |
 | ``vlt_peers``     | dictionary       | Contains objects to configure the VLT peer port-channel (see ``vlt_peers.*``)  | os9 |
 | ``vlt_peers.<portchannelid>``    | dictionary       | Configures the VLT peer port-channel (`Po <portchannelid> value`) | os9 |
 | ``vlt_peers.<portchannelid>.peer_lag``     | integer       | Configures the port-channel ID of the VLT peer lag  |  os9 |

@@ -19,7 +19,7 @@ Role variables
 | Key        | Type                      | Description                                             | Support               |
 |------------|---------------------------|---------------------------------------------------------|-----------------------|
 | ``hostname`` | string | Configures a hostname to the device (no negate command) | os9 |
-| ``unique_hostname`` | boolean: true,false\* | Configures a unique hostname in the switch | os9 |
+| ``unique_hostname`` | boolean: true,false\* | Configures a unique hostname in the switch, only applicable to the FN IOM and MXL platform modules | os9 |
 | ``enable_password`` | string              | Configures the enable password | os9 |
 | ``management_rt`` | list | Configures the management route | os9 |
 | ``management_rt.ip`` | string (required) | Configures the IP destination prefix for the management route (A.B.C.D format for IPv4, A:B:C:D::E format for IPv6) | os9 |

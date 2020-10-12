@@ -91,3 +91,9 @@ releases:
     fragments:
     - 1.0.2.yaml
     release_date: '2020-08-18'
+  1.0.3:
+    chnages:
+      release_summary: Added bug fixes for bugs found during System Test.
+    fragments:
+    - 1.0.3.yaml
+    release_date: '2020-10-09'

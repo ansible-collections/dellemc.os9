@@ -41,7 +41,7 @@ Role variables
 | ``mstp.state`` | string: absent,present\* | Deletes the configured MSTP if set to absent | os9 |
 | ``intf`` | list | Configures multiple spanning-tree in an interface (see ``intf.*``)  | os9 |
 | ``intf <interface name>``| dictionary | Configures the interface name (see ``intf.<interface name>.*``) | os9 |
-| ``intf.<interface name>.stp_type`` | list: stp,mstp,MSTi,pvst,rstp | Configures the list of spanning-tree in an interface | os9 |
+| ``intf.<interface name>.stp_type`` | list: stp,mstp,pvst,rstp | Configures the list of spanning-tree in an interface | os9 |
 | ``intf.<interface name>.edge_port`` | boolean: true,false | in os9 devices according to the stp_type EdgePort is configured;  | os9 |
 
 > **NOTE**: Asterisk (_*_) denotes the default value if none is specified.

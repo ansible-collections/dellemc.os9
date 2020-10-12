@@ -21,12 +21,12 @@ Role variables
 |------------|---------------------------|---------------------------------------------------------|-----------------------|
 | ``logging`` | list | Configures the logging server (see ``logging.*``) | os9 |
 | ``logging.ip`` | string (required)         | Configures the IPv4 address for the logging server (A.B.C.D format) | os9 |
-| ``logging.secure_port`` | integer | Specifies log messages over the TLS port | os9 |
+| ``logging.secure_port`` | integer | Specifies log messages over the TLS port, CA certificates must be installed to specify the log messages over TLS port  | os9 |
 | ``logging.tcp_port`` | integer | Specifies log messages over the TCP port if *secure_port* is not defined | os9 |
 | ``logging.udp_port`` | integer | Specifies log messages over the UDP port if both TCP and the secure port key are not defined | os9 |
 | ``logging.vrf`` | dict | Specifies a VRF instance to be used to reach the host | os9 |
 | ``logging.vrf.name`` | string | Specifies the VRF name | os9 |
-| ``logging.vrf.secure_port`` | integer | Specifies log messages over the TLS port | os9 |
+| ``logging.vrf.secure_port`` | integer | Specifies log messages over the TLS port,  CA certificates must be installed to specify the log messages over TLS port | os9 |
 | ``logging.vrf.tcp_port`` | integer | Specifies log messages over the TCP port if *secure_port key* is not defined | os9 |
 | ``logging.vrf.udp_port`` | integer | Specifies log messages over the UDP port if both TCP and *secure_port_key* is not defined | os9 |
 | ``logging.vrf.state`` | string: absent,present\* | Deletes VRF instance of the logging server if set to absent | os9 |
@@ -115,9 +115,9 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
          udp_port: 1025
          state: present
      buffer: 5
-     console_level: 7
-     trap_level: 5
-     syslog_version: 5
+     console: 7
+     trap: 5
+     version: 5
      history: 4
      history_size: 3
      monitor: 5

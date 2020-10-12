@@ -61,7 +61,6 @@ os9_lldp:
        hello: 8
        dcbx:
          version: auto
-         port_role: auto-upstream
        advertise:
          dcbx_tlv: pfc
          dcbx_tlv_state: present
@@ -386,14 +385,13 @@ interface {{ intf }}
         {% endif %}
       {% endif %}
       {% if intf_vars.advertise.management_tlv is defined and intf_vars.advertise.management_tlv %}
-        {% if intf_vars.advertise.management_tlv_state is defined and intf_vars.advertise.management_tlv_state == "ab
-sent" %}
+        {% if intf_vars.advertise.management_tlv_state is defined and intf_vars.advertise.management_tlv_state == "absent" %}
   no advertise management-tlv {{ intf_vars.advertise.management_tlv }}
         {% else %}
   advertise management-tlv {{ intf_vars.advertise.management_tlv }}
         {% endif %}
       {% endif %}
-      {% if intf_vars.advertise.med is defined  and intf_vars.advertise.med %}
+      {% if intf_vars.advertise.med is defined and intf_vars.advertise.med %}
         {% for med in intf_vars.advertise.med.keys() %}
         {% set med_vars = intf_vars.advertise.med[med] %}
           {% if med == "global_med" %}
