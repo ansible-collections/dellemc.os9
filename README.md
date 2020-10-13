@@ -40,7 +40,7 @@ To install a specific version, a version range identifier must be specified. For
 
 ## Version compatibility
 
-* Ansible version 2.10 or later.
+* Ansible version 2.10 or higher
 * Python 2.7 or higher and Python 3.5 or higher
 
 > **NOTE**: For Ansible versions lower than 2.10, use the legacy [dellos9 modules](https://ansible-dellos-docs.readthedocs.io/en/latest/modules.html#os9-modules) and [dellos roles](https://ansible-dellos-docs.readthedocs.io/en/latest/roles.html).
