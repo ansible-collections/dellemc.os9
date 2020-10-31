@@ -202,10 +202,9 @@ class Default(FactsBase):
                     return match.group(3)
 
     def parse_servicetags(self, data):
-        #return re.findall(r'^\**\s+[1-8]\s+.*([A-Z0-9]{7})\s+',t,re.M)
         tags = []
         for line in data.split('\n'):
-            match = re.match(r'\**\s+[1-8]\s+.*([A-Z0-9]{7})\s+',line)
+            match = re.match(r'\**\s+[0-9]+\s+.*([A-Z0-9]{7})\s+',line)
             if match:
                 tags.append(match.group(1))
         return tags
