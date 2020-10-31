@@ -204,10 +204,11 @@ class Default(FactsBase):
     def parse_servicetags(self, data):
         tags = []
         for line in data.split('\n'):
-            match = re.match(r'\**\s+[0-9]+\s+.*([A-Z0-9]{7})\s+',line)
+            match = re.match(r'\**\s+[0-9]+\s+.*(\b[A-Z0-9]{7}\b)', line)
             if match:
                 tags.append(match.group(1))
         return tags
+
 
 class Hardware(FactsBase):
 
