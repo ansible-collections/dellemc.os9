@@ -71,6 +71,10 @@ ansible_net_serialnum:
   description: The serial number of the remote device
   returned: always
   type: str
+ansible_net_servicetags:
+  description: The servicetags from remote device
+  returned: always
+  type: list
 ansible_net_version:
   description: The operating system version running on the remote device
   returned: always
@@ -164,6 +168,7 @@ class Default(FactsBase):
 
         data = self.responses[1]
         self.facts['serialnum'] = self.parse_serialnum(data)
+        self.facts['servicetags'] = self.parse_servicetags(data)
 
         data = self.responses[2]
         self.facts['hostname'] = self.parse_hostname(data)
@@ -196,6 +201,14 @@ class Default(FactsBase):
                 if match:
                     return match.group(3)
 
+    def parse_servicetags(self, data):
+        #return re.findall(r'^\**\s+[1-8]\s+.*([A-Z0-9]{7})\s+',t,re.M)
+        tags = []
+        for line in data.split('\n'):
+            match = re.match(r'\**\s+[1-8]\s+.*([A-Z0-9]{7})\s+',line)
+            if match:
+                tags.append(match.group(1))
+        return tags
 
 class Hardware(FactsBase):
 
