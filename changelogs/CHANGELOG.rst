@@ -4,6 +4,15 @@ Ansible Network Collection for Dell EMC OS9 Release Notes
 
 .. contents:: Topics
 
+v1.0.4
+======
+
+Release Summary
+---------------
+
+- Fixed sanity error found during the sanity tst of automation hub upload
+- Fix issue in using list of strings for commands argument for os10_command module (https://github.com/ansible-collections/dellemc.os9/issues/15)
+
 v1.0.3
 ======
 

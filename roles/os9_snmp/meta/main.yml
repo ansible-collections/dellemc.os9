@@ -9,10 +9,10 @@ galaxy_info:
 
   platforms:
   - name: os9
-  
+
   galaxy_tags:
     - networking
     - dell
     - emc
     - dellemc
-    - os9 
+    - os9

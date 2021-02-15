@@ -92,8 +92,16 @@ releases:
     - 1.0.2.yaml
     release_date: '2020-08-18'
   1.0.3:
-    chnages:
+    changes:
       release_summary: Added bug fixes for bugs found during System Test.
     fragments:
     - 1.0.3.yaml
     release_date: '2020-10-09'
+  1.0.4:
+    changes:
+      bugfixes:
+        - Fixed sanity error found during the sanity tst of automation hub upload
+        - Fix issue in using list of strings for commands argument for os10_command module (https://github.com/ansible-collections/dellemc.os9/issues/15)
+    fragments:
+    - 1.0.4.yaml
+    release_date: '2021-02-15'

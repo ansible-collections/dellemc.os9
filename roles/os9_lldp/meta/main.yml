@@ -1,10 +1,10 @@
 # Copyright (c) 2017-2020 Dell Inc. or its subsidiaries. All Rights Reserved.
 ---
 galaxy_info:
-  author: Dell EMC Networking Engineering 
+  author: Dell EMC Networking Engineering
   description: >
-               The os9_lldp role facilitates the configuration of Link Layer Discovery Protocol(LLDP) attributes in devices 
-               running Dell EMC Networking Operating Systems. 
+               The os9_lldp role facilitates the configuration of Link Layer Discovery Protocol(LLDP) attributes in devices
+               running Dell EMC Networking Operating Systems.
   license:  GPLv3
   min_ansible_version: 2.9.6
 
@@ -13,7 +13,7 @@ galaxy_info:
 
   galaxy_tags:
     - networking
-    - dell 
+    - dell
     - emc
     - dellemc
     - os9
