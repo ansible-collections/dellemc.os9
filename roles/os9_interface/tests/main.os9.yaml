@@ -3,7 +3,7 @@
 # Sample variables for OS9 device
 os9_interface:
     TenGigabitEthernet 1/3:
-            desc: "Connected to Spine1"
+            description: "Connected to Spine1"
             portmode: 
             switchport: False
             suppress_ra: present
@@ -20,7 +20,7 @@ os9_interface:
             option82: true
             remote_id: hostname
     fortyGigE 1/9:
-            desc: "Connected to Spine2"
+            description: "Connected to Spine2"
             switchport: False
             mtu: 2500    
             admin: up

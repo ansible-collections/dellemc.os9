@@ -12,7 +12,7 @@ os9_system:
         state: present
 os9_interface:
     TenGigabitEthernet 0/0:
-            desc: "Connected to Spine 1"
+            description: "Connected to Spine 1"
             mtu: 9216
             portmode:
             admin: up
@@ -21,7 +21,7 @@ os9_interface:
             ipv6_and_mask: 2001:100:1:21::2/64
             state_ipv6: present
     TenGigabitEthernet 0/1:
-            desc: "Connected to Spine 2"
+            description: "Connected to Spine 2"
             mtu: 9216
             portmode:
             admin: up
