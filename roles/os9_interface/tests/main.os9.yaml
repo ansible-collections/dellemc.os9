@@ -8,7 +8,7 @@ os9_interface:
             switchport: False
             suppress_ra: present
             mtu: 2500    
-            admin: up
+            shutdown: False
             auto_neg: true
             keepalive: true
             speed: auto
@@ -23,7 +23,7 @@ os9_interface:
             desc: "Connected to Spine2"
             switchport: False
             mtu: 2500    
-            admin: up
+            shutdown: False
             ip_and_mask: 192.168.234.20/31
             ip_and_mask_secondary: "192.168.14.1/24"
             secondary_ip_state: present
@@ -40,7 +40,7 @@ os9_interface:
             fanout_state: present
     Vlan 100:
             mtu: 4096
-            admin: down
+            shutdown: True
             ip_and_mask: 
             ipv6_and_mask: 2002:4898:5408:faaf::1/64
             state_ipv6: absent
