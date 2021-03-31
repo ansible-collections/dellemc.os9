@@ -54,7 +54,7 @@ Role variables
 | ``distribute_list.in_state`` | string: absent,present\* | Deletes the filter at incoming packets if set to absent           | os9 |
 | ``distribute_list.out`` | string       | Configures the name of the prefix-list to filter outgoing packets   | os9 |
 | ``distribute_list.out_state`` | string: absent,present\* | Deletes the filter at outgoing packets if set to absent          | os9 |
-| ``neighbor.admin`` | string: up,down       | Configures the administrative state of the neighbor  | os9 |
+| ``neighbor.shutdown`` | boolean: true\*, false      | Configures the administrative state of the neighbor, by default it is shutdown state  | os9 |
 | ``neighbor.adv_interval`` | integer       | Configures the advertisement interval of the neighbor  | os9 |
 | ``neighbor.fall_over`` | string: absent,present       | Configures the session fall on peer-route loss  | os9 |
 | ``neighbor.sender_loop_detect`` | boolean: true,false         | Enables/disables the sender-side loop detect for neighbors | os9 |
@@ -154,7 +154,7 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
                in: aa
                in_state: present
             ebgp_multihop: 25
-            admin: up
+            shutdown: False
             state: present
           - ip: 2001:4898:5808:ffa2::1
             type: ipv6
@@ -167,7 +167,7 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
             src_loopback: 0
             src_loopback_state: present
             ebgp_multihop: 255
-            admin: up
+            shutdown: False
             state: present
           - name: peer1
             type: peergroup
@@ -199,7 +199,7 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
               - type: l2vpn
                 activate: true
                 state: present
-            admin: up
+            shutdown: False
             state: present
         redistribute:
           - route_type: static

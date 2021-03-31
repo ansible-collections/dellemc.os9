@@ -15,7 +15,7 @@ os9_interface:
             desc: "Connected to Spine 1"
             mtu: 9216
             portmode:
-            admin: up
+            shutdown: False
             switchport: False
             ip_and_mask: 100.1.17.2/24
             ipv6_and_mask: 2001:100:1:11::2/64
@@ -24,7 +24,7 @@ os9_interface:
             desc: "Connected to Spine 2"
             mtu: 9216
             portmode:
-            admin: up
+            shutdown: False
             switchport: False
             ip_and_mask: 100.2.17.2/24
             ipv6_and_mask: 2001:100:2:11::2/64
@@ -41,25 +41,25 @@ os9_bgp:
       - type: ipv4
         remote_asn: 64901
         ip: 100.1.18.1
-        admin: up
+        shutdown: False
         state: present
       - type: ipv4
         remote_asn: 64901
         ip: 100.1.17.1
-        admin: up
+        shutdown: False
         state: present
       - type: ipv4
         remote_asn: 64901
         ip: 100.2.17.1
-        admin: up
+        shutdown: False
         state: present
       - type: ipv6
         remote_asn: 64901
         ip: 2001:100:1:11::1
-        admin: up
+        shutdown: False
         state: present
       - type: ipv6
         remote_asn: 64901
         ip: 2001:100:2:11::1
-        admin: up
+        shutdown: False
     state: present

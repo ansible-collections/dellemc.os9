@@ -8,7 +8,7 @@ os9_interface:
             desc: "Connected to leaf 1"
             mtu: 9216
             portmode:
-            admin: up
+            shutdown: False
             switchport: False
             ip_and_mask: 100.2.1.1/24
             ipv6_and_mask: 2001:100:2:1::1/64
@@ -17,7 +17,7 @@ os9_interface:
             desc: "Connected to leaf 2"
             mtu: 9216
             portmode:
-            admin: up
+            shutdown: False
             switchport: False
             ip_and_mask: 100.2.17.1/24
             ipv6_and_mask: 2001:100:2:11::1/64
@@ -26,7 +26,7 @@ os9_interface:
             desc: "Connected to leaf 3"
             mtu: 9216
             portmode:
-            admin: up
+            shutdown: False
             switchport: False
             ip_and_mask: 100.2.33.1/24
             ipv6_and_mask: 2001:100:2:21::1/64
@@ -35,7 +35,7 @@ os9_interface:
             desc: "Connected to leaf 4"
             mtu: 9216
             portmode:
-            admin: up
+            shutdown: False
             switchport: False
             ip_and_mask: 100.2.49.1/24
             ipv6_and_mask: 2001:100:2:31::1/64
