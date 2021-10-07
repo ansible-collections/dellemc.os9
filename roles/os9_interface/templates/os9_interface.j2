@@ -8,7 +8,7 @@ os9_interface:
             portmode: hybrid
             mtu: 2000
             switchport: False
-            admin: up
+            shutdown: False
             auto_neg: true
             keepalive: true
             ip_and_mask: "192.168.13.1/24"
@@ -224,12 +224,10 @@ interface {{ key }}
       {% endfor %}
     {% endif %}
 
-    {% if intf_vars.admin is defined %}
-      {% if intf_vars.admin == "up" %}
+    {% if intf_vars.shutdown is defined and intf_vars.shutdown == False %}
  no shutdown
-      {% elif intf_vars.admin == "down" %}
+    {% else %}
  shutdown
-      {% endif %}
     {% endif %}
 
   {% endif %}

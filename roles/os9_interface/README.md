@@ -27,7 +27,7 @@ Role variables
 | ``desc``  | string         | Configures a single line interface description  | os9 |
 | ``portmode`` | string | Configures port-mode according to the device type |  access and trunk, os9 (hybrid)  |
 | ``switchport`` | boolean: true,false\*  | Configures an interface in L2 mode |  os9 |
-| ``admin``      | string: up,down\*              | Configures the administrative state for the interface; configuring the value as administratively "up" enables the interface; configuring the value as administratively "down" disables the interface | os9 |
+| ``shutdown``      | boolean: true\*,false              | Configures the administrative state for the interface; configuring the value as shutdown "false" enables the interface; configuring the value as shutdown "true" disables the interface | os9 |
 | ``mtu``        | integer                       | Configures the MTU size for L2 and L3 interfaces (594 to 12000; 1280 to 65535 to set globally) | os9 |
 | ``fanout``     | string:dual, single, quad (os9); string:10g-4x, 40g-1x, 25g-4x, 100g-1x, 50g-2x)   | Configures fanout to the appropriate value | os9 |
 | ``fanout_speed`` | string: 10G, 25G, 40G, 50G | Configures speed for the fanout port based on the fanout mode specified | os9 |
@@ -106,7 +106,7 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
           portmode:
           switchport: False
           mtu: 2500
-          admin: up
+          shutdown: False
           auto_neg: true
           speed: auto
           duplex: full
@@ -122,7 +122,7 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
           desc: "Connected to Spine2"
           switchport: False
           mtu: 2500
-          admin: up
+          shutdown: False
           cr4_auto_neg: true
           ip_and_mask: 192.168.234.20/31
           ip_and_mask_secondary: "192.168.234.21/31"
@@ -139,7 +139,7 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
             state: "present"
          vlan 100:
            mtu: 4096
-           admin: down
+           shutdown: True
            ip_and_mask:
            ipv6_and_mask: 2002:4898:5408:faaf::1/64
            suppress_ra: present
@@ -153,12 +153,12 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
            desc: "virtual-network interface"
            ip_and_mask: "172.17.17.251/24"
            ip_virtual_gateway_ip: "172.17.17.1"
-           admin: up
+           shutdown: False
          vlan 20:
            suppress_ra: absent
            min_ra: 3
            max_ra: 4
-           admin: up
+           shutdown: False
 
 **Simple playbook to setup system — leaf.yaml**
 
