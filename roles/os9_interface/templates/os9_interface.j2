@@ -4,7 +4,7 @@ Purpose:
 Configure interface commands for os9 Devices.
 os9_interface:
     TenGigabitEthernet 1/36:
-            desc: "OS9 intf"
+            description: "OS9 intf"
             portmode: hybrid
             mtu: 2000
             switchport: False
@@ -58,12 +58,10 @@ no stack-unit {{ port[0] }} port {{ port[1] }} portmode {{ intf_vars.fanout }} n
 {% set port = intf[1].split('/') %}
   {% if (intf_vars.fanout is defined and not intf_vars.fanout) or (intf_vars.fanout is not defined)%}
 interface {{ key }}
-    {% if intf_vars.desc is defined %}
-      {% if intf_vars.desc %}
- description {{ intf_vars.desc }}
-      {% else %}
+    {% if intf_vars.description is defined and intf_vars.description %}
+ description {{ intf_vars.description }}
+    {% else %}
  no description
-      {% endif %}
     {% endif %}
   
     {% if intf_vars.portmode is defined %}
