@@ -24,7 +24,7 @@ os9_bgp:
       - type: ipv4
         remote_asn: 11
         ip: 192.168.11.1
-        admin: up
+        shutdown: False
         sender_loop_detect: false
         src_loopback: 0
         src_loopback_state: present
@@ -47,7 +47,7 @@ os9_bgp:
         remote_asn: 6
         subnet: 10.128.3.192/27
         subnet_state: present
-        admin: up
+        shutdown: False
         default_originate: true
         sender_loop_detect: false
         src_loopback: 1
@@ -272,7 +272,7 @@ router bgp {{ bgp_vars.asn }}
                 {% endif %}
               {% endif %}
             {% endif %}
-            {% if neighbor.admin is defined and (neighbor.admin == "up" or neighbor.admin == "present") %}
+            {% if neighbor.shutdown is defined and neighbor.shutdown == False %}
  neighbor {{ tag_or_ip }} no shutdown
             {% else %}
  neighbor {{ tag_or_ip }} shutdown

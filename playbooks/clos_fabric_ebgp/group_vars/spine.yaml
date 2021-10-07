@@ -18,32 +18,32 @@ os9_bgp:
     - type: ipv4
       remote_asn: "{{ bgp_neigh1_remote_asn }}"
       ip: "{{ bgp_neigh1_ip }}"
-      admin: up
+      shutdown: False
       state: present
     - type: ipv4
       remote_asn: "{{ bgp_neigh2_remote_asn }}"
       ip: "{{ bgp_neigh2_ip }}"
-      admin: up
+      shutdown: False
       state: present
     - type: ipv4
       remote_asn: "{{ bgp_neigh3_remote_asn }}"
       ip: "{{ bgp_neigh3_ip }}"
-      admin: up
+      shutdown: False
       state: present
     - type: ipv4
       remote_asn: "{{ bgp_neigh4_remote_asn }}"
       ip: "{{ bgp_neigh4_ip }}"
-      admin: up
+      shutdown: False
       state: present
     - type: ipv6
       remote_asn: "{{ bgp_neigh5_remote_asn }}"
       ip: "{{ bgp_neigh5_ip }}"
-      admin: up
+      shutdown: False
       state: present
     - type: ipv6
       remote_asn: "{{ bgp_neigh6_remote_asn }}"
       ip: "{{ bgp_neigh6_ip }}"
-      admin: up
+      shutdown: False
       address_family:
         - type: ipv4
           activate: false
@@ -55,10 +55,10 @@ os9_bgp:
     - type: ipv6
       remote_asn: "{{ bgp_neigh7_remote_asn }}"
       ip: "{{ bgp_neigh7_ip }}"
-      admin: up
+      shutdown: False
       state: present
     - type: ipv6
       remote_asn: "{{ bgp_neigh8_remote_asn }}"
       ip: "{{ bgp_neigh8_ip }}"
-      admin: up
+      shutdown: False
   state: present

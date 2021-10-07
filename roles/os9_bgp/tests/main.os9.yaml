@@ -57,7 +57,7 @@
         distribute_list: 
            in: aa
            in_state: present
-        admin: up
+        shutdown: False
         state: present
 
       - ip: 192.168.13.3
@@ -85,7 +85,7 @@
         src_loopback: 0
         src_loopback_state: present
         ebgp_multihop: 255
-        admin: up
+        shutdown: False
         state: present
     redistribute:
       - route_type: static
