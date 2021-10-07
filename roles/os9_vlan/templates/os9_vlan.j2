@@ -17,6 +17,8 @@ os9_vlan:
             state: absent
           - port: fortyGigE 0/44
             state: present
+          - range: fortyGigE 0/12-15,0/17,0/19-21
+            state: present
         state: present
 #########################################}
 {% if os9_vlan is defined and os9_vlan %}
@@ -51,11 +53,19 @@ interface Vlan {{ vlan_id[1] }}
       {% endif %}
       {% if vlan_vars.untagged_members is defined %}
         {% for ports in vlan_vars.untagged_members %}
-          {% if ports.port is defined and ports.port %}
+          {% if ports.range is defined and ports.range %}
             {% if ports.state is defined and ports.state == "absent" %}
- no untagged {{ ports.port }}
+ no untagged {{ ports.range }}
             {% else %}
+ untagged {{ ports.range }}
+            {% endif %}
+          {% else %}
+            {% if ports.port is defined and ports.port %}
+              {% if ports.state is defined and ports.state == "absent" %}
+ no untagged {{ ports.port }}
+              {% else %}
  untagged {{ ports.port }}
+              {% endif %}
             {% endif %}
           {% endif %}
         {% endfor %}
@@ -63,11 +73,19 @@ interface Vlan {{ vlan_id[1] }}
 
       {% if vlan_vars.tagged_members is defined %}
         {% for ports in vlan_vars.tagged_members %}
-          {% if ports.port is defined and ports.port %}
+          {% if ports.range is defined and ports.range %}
             {% if ports.state is defined and ports.state == "absent" %}
- no tagged {{ ports.port }}
+ no tagged {{ ports.range }}
             {% else %}
+ tagged {{ ports.range }}
+            {% endif %}
+          {% else %}
+            {% if ports.port is defined and ports.port %}
+              {% if ports.state is defined and ports.state == "absent" %}
+ no tagged {{ ports.port }}
+              {% else %}
  tagged {{ ports.port }}
+              {% endif %}
             {% endif %}
           {% endif %}
         {% endfor %}

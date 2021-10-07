@@ -30,9 +30,11 @@ Role variables
 | ``description``      | string          | Configures a single line description for the VLAN | os9 |
 | ``tagged_members``   | list         | Specifies the list of port members to be tagged to the corresponding VLAN (see ``tagged_members.*``) | os9 |
 | ``tagged_members.port`` | string | Specifies valid device interface names to be tagged for each VLAN | os9 |
+| ``tagged_members.range`` | string | Specifies valid device interface range to be tagged for each VLAN | os9 |
 | ``tagged_members.state`` | string: absent,present | Deletes the tagged association for the VLAN if set to absent | os9 |
 | ``untagged_members`` | list         | Specifies the list of port members to be untagged to the corresponding VLAN (see ``untagged_members.*``) | os9 |
 | ``untagged_members.port`` | string | Specifies valid device interface names to be untagged for each VLAN | os9 |
+| ``untagged_members.range`` | string | Specifies valid device interface range to be untagged for each VLAN | os9 |
 | ``untagged_members.state`` | string: absent,present | Deletes the untagged association for the VLAN if set to absent | os9 |
 | ``state``           | string: absent,present\*          | Deletes the VLAN corresponding to the ID if set to absent | os9 |
                                                                                                       
@@ -88,6 +90,8 @@ When `os9_cfg_generate` is set to true, the variable generates the configuration
               state: absent
           untagged_members:
             - port: fortyGigE 1/14
+              state: present
+            - port: fortyGigE 1/15-17,1/19-23,1/25
               state: present
           state: present
 
