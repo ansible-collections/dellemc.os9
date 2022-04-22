@@ -153,7 +153,7 @@ notes:
   - This module requires to increase the ssh connection rate limit.
     Use the following command I(ip ssh connection-rate-limit 60)
     to configure the same. This can also be done with the
-    M(os9_config) module.
+    M(dellemc.os9.os9_config) module.
 """
 
 EXAMPLES = """

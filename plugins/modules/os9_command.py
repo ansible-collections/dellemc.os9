@@ -25,7 +25,7 @@ description:
     argument that will cause the module to wait for a specific condition
     before returning or timing out if the condition is not met.
   - This module does not support running commands in configuration mode.
-    Please use M(dellemc_os9_os9_config) to configure Dell OS9 devices.
+    Please use M(dellemc.os9.os9_config) to configure Dell OS9 devices.
 extends_documentation_fragment: dellemc.os9.os9
 options:
   commands:
@@ -77,7 +77,7 @@ notes:
   - This module requires Dell OS9 version 9.10.0.1P13 or above.
   - This module requires to increase the ssh connection rate limit.
     Use the following command I(ip ssh connection-rate-limit 60)
-    to configure the same. This can be done via M(os9_config) module
+    to configure the same. This can be done via M(dellemc.os9.os9_config) module
     as well.
 """
 

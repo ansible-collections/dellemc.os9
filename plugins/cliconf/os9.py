@@ -23,7 +23,7 @@ __metaclass__ = type
 
 DOCUMENTATION = """
 ---
-cliconf: os9
+name: os9
 short_description: Use os9 cliconf to run command on Dell OS9 platform
 description:
   - This os9 plugin provides low level abstraction apis for
