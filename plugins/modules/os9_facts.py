@@ -32,7 +32,7 @@ options:
         to a given subset.  Possible values for this argument include
         all, hardware, config, and interfaces.  Can specify a list of
         values to include a larger subset.  Values can also be used
-        with an initial C(M(!)) to specify that a specific subset should
+        with an initial C(!) to specify that a specific subset should
         not be collected.
     type: list
     default: [ '!config' ]
@@ -40,7 +40,7 @@ notes:
   - This module requires OS9 version 9.10.0.1P13 or above.
   - This module requires an increase of the SSH connection rate limit.
     Use the following command I(ip ssh connection-rate-limit 60)
-    to configure the same. This can be also be done with the M(os9_config) module.
+    to configure the same. This can be also be done with the M(dellemc.os9.os9_config) module.
 """
 
 EXAMPLES = """
